@@ -11,6 +11,7 @@ import { Heart } from "lucide-react";
 import { motion } from "motion/react";
 import { tabs } from "@/constants";
 import { laptopTabs } from "@/constants";
+import Logo from "./Logo";
 
 const MobileNav = () => {
   const [mobileOpen, setMobileOpen] = useState<boolean>(false);
@@ -24,9 +25,7 @@ const MobileNav = () => {
         >
           <Menu size={20} color="#3A3845" />
         </div>
-        <div id="logo" className="text-3xl text-taka font-garamond">
-          STYLAS
-        </div>
+        <Logo />
         <div id="cart">
           <ShoppingCart size={20} color="#3A3845" />
         </div>

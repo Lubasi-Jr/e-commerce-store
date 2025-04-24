@@ -12,15 +12,14 @@ import { motion } from "motion/react";
 import { tabs } from "@/constants";
 import { laptopTabs } from "@/constants";
 import MobileNav from "./MobileNav";
+import Logo from "./Logo";
 
 const NavBar = () => {
   return (
     <>
       {/* LAPTOP NAV BAR */}
       <nav className="hidden  w-full h-[82px] border-b-2 border-taka lg:flex justify-between items-center py-7 px-40">
-        <div id="logo" className="text-3xl text-taka font-garamond w-[145px]">
-          STYLAS
-        </div>
+        <Logo />
         <div id="tabs" className="w-[348px] flex items-center justify-between">
           {laptopTabs.map((item, index) => (
             <Link key={index} href={item.href}>
