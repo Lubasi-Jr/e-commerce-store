@@ -36,7 +36,7 @@ const MobileNav = () => {
         initial={{ height: 0, opacity: 0 }}
         animate={{ height: mobileOpen ? 400 : 0, opacity: mobileOpen ? 1 : 0 }}
         transition={{ duration: 0.3, ease: "easeInOut" }}
-        className={`w-full border-b-2 border-taka bg-white flex flex-col overflow-hidden  items-start justify-start gap-4 absolute top-0 z-10 ${
+        className={`w-full border-b-2 border-taka bg-white flex flex-col overflow-hidden  items-start justify-start gap-4 absolute top-0 z-20 ${
           mobileOpen ? "px-5 py-5" : "px-0 py-0"
         }`}
       >

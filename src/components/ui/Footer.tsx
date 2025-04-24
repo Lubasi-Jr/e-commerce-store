@@ -5,7 +5,7 @@ import { ArrowRight } from "lucide-react";
 const Footer = () => {
   return (
     <>
-      <footer className="px-5 bg-taka flex flex-col w-full h-[550px] gap-5 md:px-40 md:flex-row md:h-[340px]">
+      <footer className="px-5 bg-taka flex flex-col w-full h-[550px] gap-5 md:px-[60px] lg:px-40 md:flex-row md:h-[340px]">
         <div
           id="get-started"
           className="w-full border-b-2 border-[#f7f6f5] h-56 py-5 flex flex-col items-start justify-between"
