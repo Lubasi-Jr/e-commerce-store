@@ -16,7 +16,7 @@ const Card = ({ product }: CardProps) => {
   return (
     <div
       id="card"
-      className="w-44 h-[500px] md:h-[530px] md:w-3xs flex flex-col items-start gap-3"
+      className="mx-auto h-[500px] md:h-[530px] w-3xs flex flex-col items-start gap-3"
     >
       <div
         id="card-image"

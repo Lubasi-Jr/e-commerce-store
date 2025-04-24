@@ -16,7 +16,7 @@ const MobileNav = () => {
   const [mobileOpen, setMobileOpen] = useState<boolean>(false);
   return (
     <>
-      <nav className="w-full h-[82px] border-b-2 border-taka flex justify-between items-center px-5 py-5  md:hidden">
+      <nav className="w-full h-[82px] border-b-2 border-taka flex justify-between items-center px-5 py-5 lg:hidden">
         <div
           id="menu"
           className="w-5 h-5 cursor-pointer"

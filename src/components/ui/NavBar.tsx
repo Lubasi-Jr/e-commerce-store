@@ -17,7 +17,7 @@ const NavBar = () => {
   return (
     <>
       {/* LAPTOP NAV BAR */}
-      <nav className="hidden  w-full h-[82px] border-b-2 border-taka md:flex justify-between items-center py-7 px-40">
+      <nav className="hidden  w-full h-[82px] border-b-2 border-taka lg:flex justify-between items-center py-7 px-40">
         <div id="logo" className="text-3xl text-taka font-garamond w-[145px]">
           STYLAS
         </div>
