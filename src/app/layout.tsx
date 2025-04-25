@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, EB_Garamond, Inter } from "next/font/google";
 import NavBar from "@/components/ui/NavBar";
 import Footer from "@/components/ui/Footer";
+import QueryWrapper from "@/context/QueryWrapper";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -39,9 +40,11 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${ebGaramond.variable} ${inter.variable} antialiased`}
       >
-        <NavBar />
-        {children}
-        <Footer />
+        <QueryWrapper>
+          <NavBar />
+          {children}
+          <Footer />
+        </QueryWrapper>
       </body>
     </html>
   );

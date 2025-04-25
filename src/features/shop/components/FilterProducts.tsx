@@ -9,8 +9,17 @@ import { X } from "lucide-react";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { ListRestart } from "lucide-react";
+import { useQuery } from "@tanstack/react-query";
+import { fetchProducts } from "../database/queries";
+import BlankCard from "./BlankCard";
 
 const FilterProducts = () => {
+  // API call using react query
+  const { data, isLoading, error } = useQuery({
+    queryKey: ["products"],
+    queryFn: fetchProducts,
+  });
+
   const [filterOpen, setFilterOpen] = useState<boolean>(false);
   const [category, setCategory] = useState<string>("");
   const [decade, setDecade] = useState<string>("");
@@ -135,14 +144,25 @@ const FilterProducts = () => {
         </div>
       </motion.div>
       {/* Grid display */}
-      <section
-        id="products-grid"
-        className="px-2.5 py-8 w-full min-h-screen grid grid-cols-1 gap-y-2 mt-6 sm:grid-cols-2 lg:grid-cols-3"
-      >
-        {bestSellers.map((product, index) => (
-          <Card key={index} product={product} />
-        ))}
-      </section>
+      {isLoading ? (
+        <section
+          id="products-grid"
+          className="px-2.5 py-8 w-full min-h-screen grid grid-cols-1 gap-y-2 mt-6 sm:grid-cols-2 lg:grid-cols-3"
+        >
+          {bestSellers.map((item, index) => (
+            <BlankCard key={index} />
+          ))}
+        </section>
+      ) : (
+        <section
+          id="products-grid"
+          className="px-2.5 py-8 w-full min-h-screen grid grid-cols-1 gap-y-2 mt-6 sm:grid-cols-2 lg:grid-cols-3"
+        >
+          {data?.map((product, index) => (
+            <Card key={index} product={product} />
+          ))}
+        </section>
+      )}
     </>
   );
 };
