@@ -6,9 +6,21 @@ import { bestSellers } from "@/features/home/constants";
 import Card from "@/components/ui/Card";
 import { Filter } from "lucide-react";
 import { X } from "lucide-react";
+import { Label } from "@/components/ui/label";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { ListRestart } from "lucide-react";
 
 const FilterProducts = () => {
   const [filterOpen, setFilterOpen] = useState<boolean>(false);
+  const [category, setCategory] = useState<string>("");
+  const [decade, setDecade] = useState<string>("");
+
+  const clearFilters = () => {
+    //Reset filters
+    setCategory("");
+    setDecade("");
+    //Call initial function for all products
+  };
   return (
     <>
       <section
@@ -40,6 +52,86 @@ const FilterProducts = () => {
         >
           <X size={20} color="#595667" />
           <p className="font-inter font-semibold">CLOSE</p>
+        </div>
+        <div
+          id="radio-group-categories"
+          className="flex gap-2 h-auto justify-start w-[150px] cursor-pointer flex-col mt-1.5 overflow-y-clip"
+        >
+          <p className="font-inter font-semibold">Category</p>
+          <RadioGroup
+            defaultValue=""
+            value={category}
+            onValueChange={(value: string) => setCategory(value)}
+          >
+            <div className="flex items-center space-x-2">
+              <RadioGroupItem value="vinyl" id="vinyl" />
+              <Label htmlFor="vinyl" className="font-inter">
+                Vinyls
+              </Label>
+            </div>
+            <div className="flex items-center space-x-2">
+              <RadioGroupItem value="turnable" id="turnable" />
+              <Label htmlFor="turnable" className="font-inter">
+                Turnables
+              </Label>
+            </div>
+            <div className="flex items-center space-x-2">
+              <RadioGroupItem value="instrument" id="instrument" />
+              <Label htmlFor="instrument" className="font-inter">
+                Instruments
+              </Label>
+            </div>
+            <div className="flex items-center space-x-2">
+              <RadioGroupItem value="poster" id="poster" />
+              <Label htmlFor="poster" className="font-inter">
+                Posters
+              </Label>
+            </div>
+          </RadioGroup>
+        </div>
+        <div
+          id="radio-group-decade"
+          className="flex gap-2 h-auto justify-start w-[150px] cursor-pointer flex-col mt-1.5 overflow-y-clip"
+        >
+          <p className="font-inter font-semibold">Decade</p>
+          <RadioGroup
+            defaultValue=""
+            value={decade}
+            onValueChange={(value: string) => setDecade(value)}
+          >
+            <div className="flex items-center space-x-2">
+              <RadioGroupItem value="1990" id="1990" />
+              <Label htmlFor="1990" className="font-inter">
+                Before 1990's
+              </Label>
+            </div>
+            <div className="flex items-center space-x-2">
+              <RadioGroupItem value="1980" id="1980" />
+              <Label htmlFor="1980" className="font-inter">
+                Before 1980's
+              </Label>
+            </div>
+            <div className="flex items-center space-x-2">
+              <RadioGroupItem value="1970" id="1970" />
+              <Label htmlFor="1970" className="font-inter">
+                Before 1970's
+              </Label>
+            </div>
+            <div className="flex items-center space-x-2">
+              <RadioGroupItem value="1960" id="1960" />
+              <Label htmlFor="1960" className="font-inter">
+                Before 1960's
+              </Label>
+            </div>
+          </RadioGroup>
+        </div>
+        <div
+          id="clear-filters"
+          className="flex gap-1 h-5 justify-start w-[150px] cursor-pointer mt-2.5"
+          onClick={() => clearFilters()}
+        >
+          <ListRestart size={20} color="#595667" />
+          <p className="font-inter font-semibold">CLEAR FILTERS</p>
         </div>
       </motion.div>
       {/* Grid display */}
