@@ -40,6 +40,7 @@ const FilterProducts = () => {
         decade={decade}
         handleCategory={categoryChange}
         handleDecade={decadeChange}
+        count={data?.length}
       />
       {/* Grid display */}
       {isLoading ? (

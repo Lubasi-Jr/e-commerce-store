@@ -8,4 +8,12 @@ declare global {
     imageUrl: string;
     price: number;
   };
+
+  type Details = {
+    name: string;
+    price: number;
+    details: string;
+    primaryImg: string;
+    secondaryImg: string;
+  };
 }

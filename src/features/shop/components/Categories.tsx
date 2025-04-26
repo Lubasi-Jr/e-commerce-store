@@ -18,6 +18,7 @@ type CategoryProps = {
   decade: string;
   handleCategory: (value: string) => void;
   handleDecade: (value: string) => void;
+  count: number | undefined;
 };
 
 const Categories = ({
@@ -25,6 +26,7 @@ const Categories = ({
   decade,
   handleCategory,
   handleDecade,
+  count,
 }: CategoryProps) => {
   const [filterOpen, setFilterOpen] = useState<boolean>(false);
 
@@ -47,7 +49,7 @@ const Categories = ({
           <Filter size={20} color="#595667" />
           <p className="font-inter font-semibold">FILTER</p>
         </div>
-        <p className="font-inter font-semibold">Showing 4 items</p>
+        <p className="font-inter font-semibold">Showing {count} items</p>
       </section>
       {/* Pop up for filters */}
       <motion.div
