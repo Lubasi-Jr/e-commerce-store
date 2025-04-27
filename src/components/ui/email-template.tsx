@@ -1,14 +1,16 @@
-import React from "react";
+import * as React from "react";
 
-const Template = () => {
-  return (
-    <div>
-      <h1>You have successfully subscribed to STYLAS newsletter!</h1>
-      <p>Kind Regards,</p>
-      <p>Lubasi Milupi</p>
-      <p>MLPLUB001</p>
-    </div>
-  );
-};
+interface EmailTemplateProps {
+  firstName: string;
+}
 
-export default Template;
+export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({
+  firstName,
+}) => (
+  <div>
+    <h1>You have successfully subscribed to STYLAS newsletter!</h1>
+    <p>Kind Regards,</p>
+    <p>Lubasi Milupi</p>
+    <p>MLPLUB001</p>
+  </div>
+);
