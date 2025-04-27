@@ -13,8 +13,13 @@ import { tabs } from "@/constants";
 import { laptopTabs } from "@/constants";
 import MobileNav from "./MobileNav";
 import Logo from "./Logo";
+import { usePathname } from "next/navigation";
+import { useCart } from "@/context/CartContext";
 
 const NavBar = () => {
+  const path = usePathname();
+  const { cart } = useCart();
+  const cartCount = cart.length;
   return (
     <>
       {/* LAPTOP NAV BAR */}
@@ -23,18 +28,26 @@ const NavBar = () => {
         <div id="tabs" className="w-[348px] flex items-center justify-between">
           {laptopTabs.map((item, index) => (
             <Link key={index} href={item.href}>
-              <p className="font-inter text-xs">{item.title}</p>
+              <p
+                className={`font-inter text-xs ${
+                  path == item.href ? "text-tiki" : "text-taka"
+                }`}
+              >
+                {item.title}
+              </p>
             </Link>
           ))}
         </div>
         <div
           id="icons"
-          className="w-[152px] h-6 flex items-center justify-between"
+          className=" relative w-9 h-8 flex items-center justify-center"
         >
-          <Search size={20} />
-          <CircleUser size={20} />
-          <Heart size={20} />
-          <ShoppingCart size={20} />
+          <ShoppingCart size={30} />
+          {cartCount > 0 && (
+            <div className="absolute -top-1 -right-1 bg-taka text-white text-xs w-4 h-4 flex items-center justify-center rounded-full">
+              {cartCount}
+            </div>
+          )}
         </div>
       </nav>
 

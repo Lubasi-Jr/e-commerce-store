@@ -3,6 +3,8 @@ import { Geist, Geist_Mono, EB_Garamond, Inter } from "next/font/google";
 import NavBar from "@/components/ui/NavBar";
 import Footer from "@/components/ui/Footer";
 import QueryWrapper from "@/context/QueryWrapper";
+import { CartProvider } from "@/context/CartContext";
+import { Toaster } from "@/components/ui/sonner";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -41,9 +43,12 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} ${ebGaramond.variable} ${inter.variable} antialiased`}
       >
         <QueryWrapper>
-          <NavBar />
-          {children}
-          <Footer />
+          <CartProvider>
+            <NavBar />
+            {children}
+            <Footer />
+            <Toaster />
+          </CartProvider>
         </QueryWrapper>
       </body>
     </html>

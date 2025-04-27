@@ -24,6 +24,11 @@ export const tabs = [
     href: "/contact",
     title: "CONTACT US",
   },
+  {
+    id: 6,
+    href: "/cart",
+    title: "CART",
+  },
 ];
 
 export const laptopTabs = [

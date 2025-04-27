@@ -15,7 +15,7 @@ const Details = ({ uuid }: { uuid: string }) => {
   console.log(data);
 
   if (isLoading) return <BlankSection />;
-  return data ? <FilledSection {...data} /> : <BlankSection />;
+  return data ? <FilledSection {...data} uuid={uuid} /> : <BlankSection />;
 };
 
 export default Details;

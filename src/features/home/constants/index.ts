@@ -32,18 +32,18 @@ export const bestSellers: Product[] = [
     imageUrl: "/brenda_fassie_poster.png",
     name: "Weekend Special Poster",
     price: 100,
-    id: "Gonna provide it soon",
+    id: "6e63e54d-b067-4f72-99f9-f993c0d1161f",
   },
   {
     imageUrl: "/turnable.jpg",
     name: "Turnable",
     price: 799.99,
-    id: "TBA",
+    id: "7c0b0535-daa0-409e-bb7c-4b38ef51f458",
   },
   {
     imageUrl: "/kalimba2.jpg",
     name: "Kalimba",
     price: 199.99,
-    id: "TBA",
+    id: "dba9bef1-ef41-4654-be11-f28b9a186d90",
   },
 ];

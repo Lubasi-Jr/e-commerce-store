@@ -2,6 +2,8 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { toast } from "sonner";
+import { useCart } from "@/context/CartContext";
 
 type CardProps = {
   product: Product;
@@ -9,10 +11,14 @@ type CardProps = {
 
 const Card = ({ product }: CardProps) => {
   const { id, name, price, imageUrl } = product;
+  const { addToCart } = useCart();
 
   const addProductCard = () => {
     //Logic for adding product to cart
-    console.log("Product Added");
+    addToCart(product);
+    toast.success(`Item added: ${name}`, {
+      description: `You can view it in your cart`,
+    });
   };
   return (
     <div
@@ -37,7 +43,7 @@ const Card = ({ product }: CardProps) => {
         id="price"
         className="h-2.5 w-full font-inter font-semibold uppercase text-taka text-start mb-9"
       >
-        {price}
+        R {price}
       </h2>
       <button
         onClick={() => addProductCard()}
