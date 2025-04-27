@@ -8,7 +8,6 @@ const About = () => {
     <>
       <AboutLu />
       <Categories />
-      <NewsLetter />
     </>
   );
 };
