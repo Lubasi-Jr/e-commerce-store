@@ -14,10 +14,10 @@ export const fetchProducts = async (
     }
 
     if (decade) {
-      const decadeNumber = Number(decade); // 👈 Safely convert decade string to a number
+      const decadeNumber = Number(decade);
       if (!isNaN(decadeNumber)) {
         query = query.lte("year", decadeNumber);
-        // example: get products released BEFORE 1970
+        // example: get products released BEFORE 1980
       }
     }
 

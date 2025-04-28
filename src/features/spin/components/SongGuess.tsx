@@ -1,11 +1,12 @@
 "use client";
 import React, { useState } from "react";
+import { toast } from "sonner";
 
 const SongGuess = () => {
   const [song, setSong] = useState("");
 
   const handleSubmit = () => {
-    console.log(song);
+    toast.success("Your song guess has been submitted successfully");
     setSong("");
   };
 
