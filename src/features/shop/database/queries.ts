@@ -1,27 +1,42 @@
 import { supabase } from "@/lib/supabaseClient";
 
-export const fetchProducts = async (): Promise<Product[]> => {
+export const fetchProducts = async (
+  category?: string,
+  decade?: string
+): Promise<Product[]> => {
   try {
-    const { data, error } = await supabase
+    let query = supabase
       .from("products")
-      .select("*,productImages(image_url,is_primary)"); // Join method to obtain images
+      .select("*,productImages(image_url,is_primary)");
+
+    if (category) {
+      query = query.eq("category", category);
+    }
+
+    if (decade) {
+      const decadeNumber = Number(decade); // 👈 Safely convert decade string to a number
+      if (!isNaN(decadeNumber)) {
+        query = query.lte("year", decadeNumber);
+        // example: get products released BEFORE 1970
+      }
+    }
+
+    const { data, error } = await query;
+
     if (error) {
       throw error;
     }
 
-    //Transform Data to type product
     const products = data.map((item: any) => ({
       id: item.id,
       name: item.name,
       price: item.price,
-      imageUrl: item.productImages?.[0]?.image_url ?? "/turnable.jpg", //If image is not found, default image is the turnable
+      imageUrl: item.productImages?.[0]?.image_url ?? "/turnable.jpg",
     }));
 
-    console.log(products);
-
-    return products; // Return data here
+    return products;
   } catch (err) {
     console.error("Error fetching products:", err);
-    throw err; // Rethrow the error for React Query to handle it
+    throw err;
   }
 };

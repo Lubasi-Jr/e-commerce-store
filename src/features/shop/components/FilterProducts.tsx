@@ -15,14 +15,13 @@ import BlankCard from "./BlankCard";
 import Categories from "./Categories";
 
 const FilterProducts = () => {
-  // API call using react query
-  const { data, isLoading, error } = useQuery({
-    queryKey: ["products"],
-    queryFn: fetchProducts,
-  });
-
   const [category, setCategory] = useState<string>("");
   const [decade, setDecade] = useState<string>("");
+  // API call using react query
+  const { data, isLoading, error } = useQuery({
+    queryKey: ["products", category, decade],
+    queryFn: () => fetchProducts(category, decade),
+  });
 
   const categoryChange = (val: string) => {
     setCategory(val);
