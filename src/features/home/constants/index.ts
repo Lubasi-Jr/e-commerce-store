@@ -6,8 +6,8 @@ export const categories = [
   },
   {
     src: "/turnable.jpg",
-    alt: "Turnable",
-    text: "TURNABLES",
+    alt: "Turntable",
+    text: "TURNTABLES",
   },
   {
     src: "/djembe.jpeg",
@@ -36,7 +36,7 @@ export const bestSellers: Product[] = [
   },
   {
     imageUrl: "/turnable.jpg",
-    name: "Turnable",
+    name: "Turntable",
     price: 799.99,
     id: "7c0b0535-daa0-409e-bb7c-4b38ef51f458",
   },
