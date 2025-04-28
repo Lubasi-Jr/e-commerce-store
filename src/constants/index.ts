@@ -80,3 +80,6 @@ export const socialLinks = [
   { name: "Facebook", link: "https://www.facebook.com/lubasi.milupi.2" },
   { name: "YouTube", link: "https://youtu.be/KgayxOF4Y7E?si=ez3ivC_I7s4Zko7p" },
 ];
+
+export const metadataDescription =
+  "Stylas is your gateway to Africa’s rich musical heritage. We offer a curated collection of vinyl records featuring legendary African albums, authentic African musical instruments, and high-quality turntables to bring timeless sounds to life. Whether you are a collector, a music enthusiast, or someone discovering the magic of African music for the first time, Stylas is where culture, rhythm, and tradition meet. Explore. Listen. Connect";
