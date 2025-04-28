@@ -38,7 +38,8 @@ const NavBar = () => {
             </Link>
           ))}
         </div>
-        <div
+        <Link
+          href={"/cart"}
           id="icons"
           className=" relative w-9 h-8 flex items-center justify-center"
         >
@@ -48,7 +49,7 @@ const NavBar = () => {
               {cartCount}
             </div>
           )}
-        </div>
+        </Link>
       </nav>
 
       {/* MOBILE NAV BAR */}

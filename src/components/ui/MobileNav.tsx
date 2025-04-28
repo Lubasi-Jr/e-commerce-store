@@ -12,9 +12,12 @@ import { motion } from "motion/react";
 import { tabs } from "@/constants";
 import { laptopTabs } from "@/constants";
 import Logo from "./Logo";
+import { useCart } from "@/context/CartContext";
 
 const MobileNav = () => {
   const [mobileOpen, setMobileOpen] = useState<boolean>(false);
+  const { cart } = useCart();
+  const cartCount = cart.length;
   return (
     <>
       <nav className="w-full h-[82px] border-b-2 border-taka flex justify-between items-center px-5 py-5 lg:hidden">
@@ -26,9 +29,18 @@ const MobileNav = () => {
           <Menu size={20} color="#3A3845" />
         </div>
         <Logo />
-        <div id="cart">
-          <ShoppingCart size={20} color="#3A3845" />
-        </div>
+        <Link
+          href={"/cart"}
+          id="icons"
+          className=" relative w-9 h-8 flex items-center justify-center"
+        >
+          <ShoppingCart size={30} />
+          {cartCount > 0 && (
+            <div className="absolute -top-1 -right-1 bg-taka text-white text-xs w-4 h-4 flex items-center justify-center rounded-full">
+              {cartCount}
+            </div>
+          )}
+        </Link>
       </nav>
       {/* MOBILE NAV BAR */}
       <motion.div

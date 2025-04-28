@@ -1,6 +1,8 @@
 import React from "react";
-
+import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { socialLinks } from "@/constants";
+import { footerLinks } from "@/constants";
 
 const Footer = () => {
   return (
@@ -20,9 +22,11 @@ const Footer = () => {
             Celebrating African music and culture through timeless vinyl,
             instruments, and art.
           </p>
-          <button className="w-[142px] h-[40px] whitespace-nowrap font-inter bg-none border-2 border-[#f7f6f5] text-[#F7F6F5] font-semibold px-2 py-1.5 flex gap-2 items-center justify-center">
-            GET STARTED
-          </button>
+          <Link href={"/shop"}>
+            <button className="w-[142px] h-[40px] whitespace-nowrap font-inter cursor-pointer bg-none border-2 border-[#f7f6f5] text-[#F7F6F5] font-semibold px-2 py-1.5 flex gap-2 items-center justify-center">
+              GET STARTED
+            </button>
+          </Link>
         </div>
         <div
           id="quick_links"
@@ -31,19 +35,28 @@ const Footer = () => {
           <div id="list1" className="w-[180px] ">
             <h1 className="text-white mb-1 text-2xl font-inter">QUICK LINKS</h1>
             <ul className="flex flex-col items-start justify-between">
-              <li className="text-[#f7f6f5] font-inter">Home</li>
-              <li className="text-[#f7f6f5] font-inter">Shop</li>
-              <li className="text-[#f7f6f5] font-inter">Spin</li>
-              <li className="text-[#f7f6f5] font-inter">Cart</li>
+              {footerLinks.map((item, index) => (
+                <Link href={item.link} key={index}>
+                  <li className="text-[#f7f6f5] font-inter">{item.name}</li>
+                </Link>
+              ))}
             </ul>
           </div>
           <div id="list1" className="w-[180px] ">
             <h1 className="text-white mb-1 text-2xl font-inter">SOCIALS</h1>
             <ul className="flex flex-col items-start justify-between">
-              <li className="text-[#f7f6f5] font-inter">Instagram</li>
-              <li className="text-[#f7f6f5] font-inter">Facebook</li>
-              <li className="text-[#f7f6f5] font-inter">LinkedIn</li>
-              <li className="text-[#f7f6f5] font-inter">YouTube</li>
+              {socialLinks.map((item, index) => (
+                <li key={index}>
+                  <a
+                    href={item.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[#f7f6f5] font-inter no-underline hover:underline"
+                  >
+                    {item.name}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
