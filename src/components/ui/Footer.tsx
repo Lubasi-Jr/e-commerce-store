@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { socialLinks } from "@/constants";
 import { footerLinks } from "@/constants";
+//Completed
 
 const Footer = () => {
   return (
