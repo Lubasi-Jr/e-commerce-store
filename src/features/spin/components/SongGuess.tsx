@@ -5,7 +5,8 @@ import { toast } from "sonner";
 const SongGuess = () => {
   const [song, setSong] = useState("");
 
-  const handleSubmit = () => {
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
     toast.success("Your song guess has been submitted successfully");
     setSong("");
   };

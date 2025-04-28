@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 const SpinToWin = () => {
@@ -21,9 +22,11 @@ const SpinToWin = () => {
             Try to spin a random record and if you guess what song it is
             correctly, you'll stand a chance to win some prizes
           </p>
-          <p className="h-10 w-32 underline text-xl font-inter font-bold text-center cursor-pointer">
-            SPIN NOW
-          </p>
+          <Link href={"/spin"}>
+            <p className="h-10 w-32 underline text-xl font-inter font-bold text-center cursor-pointer">
+              SPIN NOW
+            </p>
+          </Link>
         </div>
         <div
           id="promo-image"
