@@ -1,9 +1,8 @@
 import React from "react";
 import Details from "@/features/details/components/Details";
 
-const ProductDetails = async ({ params }: { params: { id: string } }) => {
-  let param = await params;
-  const uuid = param.id;
+const ProductDetails = ({ params }: { params: { id: string } }) => {
+  const uuid = params.id;
   //console.log(uuid);
 
   return (
