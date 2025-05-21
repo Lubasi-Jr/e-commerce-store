@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import Image from "next/image";
 
 const PromoBanner = () => {
@@ -18,9 +19,11 @@ const PromoBanner = () => {
           What kind of friend would we be if we let you buy vinyl without a
           turntable
         </p>
-        <p className="h-10 w-32 underline text-xl font-inter font-bold text-center cursor-pointer">
-          SHOP NOW
-        </p>
+        <Link href="/shop">
+          <p className="h-10 w-32 underline text-xl font-inter font-bold text-center cursor-pointer">
+            SHOP NOW
+          </p>
+        </Link>
       </div>
       <div
         id="promo-image"
