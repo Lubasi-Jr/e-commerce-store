@@ -90,6 +90,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       router.push("/");
     } catch (error) {
       console.error("Error signing in:", error);
+      // Fix this toast issue
       toast("Invalid Log In Credentials");
     }
   }
