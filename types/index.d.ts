@@ -16,4 +16,11 @@ declare global {
     primaryImg: string;
     secondaryImg: string;
   };
+
+  type User = {
+    id: string;
+    firstName: string;
+    surname: string;
+    email: string;
+  };
 }
