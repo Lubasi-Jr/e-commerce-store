@@ -7,7 +7,7 @@ import { AuthProvider } from "@/context/AuthWrapper";
 import { CartProvider } from "@/context/CartContext";
 import { Toaster } from "@/components/ui/sonner";
 import { metadataDescription } from "@/constants";
-import "./globals.css";
+import "../globals.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
