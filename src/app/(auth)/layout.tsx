@@ -3,6 +3,9 @@ import { AuthProvider } from "@/context/AuthWrapper";
 import { metadataDescription } from "@/constants";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, EB_Garamond, Inter } from "next/font/google";
+import TestBanner from "@/components/ui/TestBanner";
+import AuthPageBanner from "@/features/authentication/components/AuthPageBanner";
+import "../globals.css";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -35,7 +38,10 @@ export default function AuthLayout({
   return (
     <html lang="en">
       <body className={` ${ebGaramond.variable} ${inter.variable} antialiased`}>
-        <AuthProvider>{children}</AuthProvider>
+        <AuthProvider>
+          <AuthPageBanner />
+          {children}
+        </AuthProvider>
       </body>
     </html>
   );

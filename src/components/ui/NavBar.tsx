@@ -55,7 +55,7 @@ const NavBar = () => {
           </Link>
           {isLoggedIn ? (
             <p
-              onClick={() => console.log("Logging out user")}
+              onClick={async () => logout()}
               className="font-inter text-taka font-medium cursor-pointer"
             >
               Log out

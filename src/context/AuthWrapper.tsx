@@ -1,5 +1,7 @@
 "use client";
 import { supabase } from "@/lib/supabaseClient";
+import { log } from "console";
+import { useRouter } from "next/navigation";
 import {
   ReactNode,
   useState,
@@ -7,6 +9,7 @@ import {
   useContext,
   createContext,
 } from "react";
+import { toast } from "sonner";
 
 type AuthContextType = {
   user: User | null;
@@ -27,6 +30,7 @@ export const useAuth = () => {
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   // Initialize the states
+  const router = useRouter();
   const [user, setUser] = useState<User | null>(null);
   const isLoggedIn = user !== null; // No need for this to be a state because when the state of user changes then isLogged in automatically changes
   // Get the user. Call this function when signing in and logging out
@@ -48,6 +52,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
             surname: userData.user.user_metadata.surname,
             email: userData.user?.email || "lubasimilupi@gmail.com",
           };
+
           setUser(currentUser);
         }
       } else {
@@ -82,8 +87,10 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         password,
       });
       if (error) throw error;
+      router.push("/");
     } catch (error) {
       console.error("Error signing in:", error);
+      toast("Invalid Log In Credentials");
     }
   }
 

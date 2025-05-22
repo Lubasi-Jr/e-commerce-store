@@ -14,7 +14,6 @@ import { laptopTabs } from "@/constants";
 import Logo from "./Logo";
 import { useCart } from "@/context/CartContext";
 import { useAuth } from "@/context/AuthWrapper";
-import { log } from "console";
 
 const MobileNav = () => {
   const [mobileOpen, setMobileOpen] = useState<boolean>(false);
@@ -80,7 +79,7 @@ const MobileNav = () => {
           <div
             id="logout-button"
             className="w-full text-3xl text-taka font-semibold font-garamond overflow-y-clip"
-            onClick={() => console.log("Logging out user")}
+            onClick={async () => logout()}
           >
             LOG OUT
           </div>

@@ -1,7 +1,12 @@
 import React from "react";
+import SignUpForm from "@/features/authentication/components/SignUpForm";
 
 const SignUp = () => {
-  return <div>Sign Up screen should be here</div>;
+  return (
+    <>
+      <SignUpForm />
+    </>
+  );
 };
 
 export default SignUp;
