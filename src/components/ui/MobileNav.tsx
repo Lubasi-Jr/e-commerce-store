@@ -13,11 +13,14 @@ import { tabs } from "@/constants";
 import { laptopTabs } from "@/constants";
 import Logo from "./Logo";
 import { useCart } from "@/context/CartContext";
+import { useAuth } from "@/context/AuthWrapper";
+import { log } from "console";
 
 const MobileNav = () => {
   const [mobileOpen, setMobileOpen] = useState<boolean>(false);
   const { cart } = useCart();
   const cartCount = cart.length;
+  const { isLoggedIn, logout } = useAuth();
   return (
     <>
       <nav className="w-full h-[82px] border-b-2 border-taka flex justify-between items-center px-5 py-5 lg:hidden">
@@ -46,7 +49,7 @@ const MobileNav = () => {
       <motion.div
         id="mobile-nav"
         initial={{ height: 0, opacity: 0 }}
-        animate={{ height: mobileOpen ? 400 : 0, opacity: mobileOpen ? 1 : 0 }}
+        animate={{ height: mobileOpen ? 500 : 0, opacity: mobileOpen ? 1 : 0 }}
         transition={{ duration: 0.3, ease: "easeInOut" }}
         className={`w-full border-b-2 border-taka bg-white flex flex-col overflow-hidden  items-start justify-start gap-4 absolute top-0 z-20 ${
           mobileOpen ? "px-5 py-5" : "px-0 py-0"
@@ -73,6 +76,24 @@ const MobileNav = () => {
             </div>
           </Link>
         ))}
+        {isLoggedIn ? (
+          <div
+            id="logout-button"
+            className="w-full text-3xl text-taka font-semibold font-garamond overflow-y-clip"
+            onClick={() => console.log("Logging out user")}
+          >
+            LOG OUT
+          </div>
+        ) : (
+          <Link href={"/login"}>
+            <div
+              id="link"
+              className="w-full text-3xl text-taka font-semibold font-garamond overflow-y-clip"
+            >
+              LOG IN
+            </div>
+          </Link>
+        )}
       </motion.div>
     </>
   );

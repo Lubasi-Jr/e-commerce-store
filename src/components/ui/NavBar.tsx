@@ -15,8 +15,10 @@ import MobileNav from "./MobileNav";
 import Logo from "./Logo";
 import { usePathname } from "next/navigation";
 import { useCart } from "@/context/CartContext";
+import { useAuth } from "@/context/AuthWrapper";
 
 const NavBar = () => {
+  const { isLoggedIn, logout } = useAuth();
   const path = usePathname();
   const { cart } = useCart();
   const cartCount = cart.length;
@@ -38,18 +40,32 @@ const NavBar = () => {
             </Link>
           ))}
         </div>
-        <Link
-          href={"/cart"}
-          id="icons"
-          className=" relative w-9 h-8 flex items-center justify-center"
-        >
-          <ShoppingCart size={30} />
-          {cartCount > 0 && (
-            <div className="absolute -top-1 -right-1 bg-taka text-white text-xs w-4 h-4 flex items-center justify-center rounded-full">
-              {cartCount}
-            </div>
+        <div id="far-right-icons" className="flex gap-4 items-center">
+          <Link
+            href={"/cart"}
+            id="icons"
+            className=" relative w-9 h-8 flex items-center justify-center"
+          >
+            <ShoppingCart size={30} />
+            {cartCount > 0 && (
+              <div className="absolute -top-1 -right-1 bg-taka text-white text-xs w-4 h-4 flex items-center justify-center rounded-full">
+                {cartCount}
+              </div>
+            )}
+          </Link>
+          {isLoggedIn ? (
+            <p
+              onClick={() => console.log("Logging out user")}
+              className="font-inter text-taka font-medium cursor-pointer"
+            >
+              Log out
+            </p>
+          ) : (
+            <Link href={"/login"}>
+              <p className="font-inter text-taka font-medium">Login</p>
+            </Link>
           )}
-        </Link>
+        </div>
       </nav>
 
       {/* MOBILE NAV BAR */}
