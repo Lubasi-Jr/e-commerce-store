@@ -16,7 +16,8 @@ const ForgotPassword = () => {
     const email = formData.get("email") as string;
 
     const { data, error } = await supabase.auth.resetPasswordForEmail(email, {
-      redirectTo: "http://localhost:3000/update-password",
+      redirectTo:
+        "https://e-commerce-store-lubasis-projects-b5f16d2b.vercel.app/update-password",
     });
     if (error) {
       setError(true);
