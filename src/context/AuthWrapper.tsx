@@ -15,7 +15,7 @@ type AuthContextType = {
   user: User | null;
   isLoggedIn: boolean;
   logout: () => void;
-  signIn: (email: string, password: string) => void;
+  signIn: (email: string, password: string) => Promise<boolean>;
 };
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -80,18 +80,21 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   // Helper functions: These functions will trigger the onAuthStateChange and therefore update the current session
-  async function signIn(email: string, password: string) {
+  async function signIn(email: string, password: string): Promise<boolean> {
     try {
       const { data, error } = await supabase.auth.signInWithPassword({
         email,
         password,
       });
-      if (error) throw error;
-      router.push("/");
+      if (error) {
+        throw error;
+      }
+      //router.push("/");
+      return true;
     } catch (error) {
       console.error("Error signing in:", error);
       // Fix this toast issue
-      toast("Invalid Log In Credentials");
+      return false;
     }
   }
 

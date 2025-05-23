@@ -10,6 +10,7 @@ const LogInForm = () => {
   const router = useRouter();
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const [error, setError] = useState<boolean>(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -17,7 +18,12 @@ const LogInForm = () => {
     const email = formData.get("email") as string;
     const password = formData.get("password") as string;
 
-    const response = signIn(email, password);
+    const response = await signIn(email, password);
+    if (response) {
+      router.push("/");
+    } else {
+      setError(!error);
+    }
   };
   return (
     <>
@@ -63,6 +69,11 @@ const LogInForm = () => {
             LOG IN
           </button>
         </form>
+        {error && (
+          <p className="text-base font-inter text-red-600">
+            Invalid Login credentials
+          </p>
+        )}
         <p className="text-base font-inter text-gray-600">
           Don't have an account ? sign up{" "}
           <Link href={"/sign-up"}>
