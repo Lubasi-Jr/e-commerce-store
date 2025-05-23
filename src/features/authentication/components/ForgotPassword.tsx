@@ -1,34 +1,35 @@
 "use client";
-import { useAuth } from "@/context/AuthWrapper";
+import React from "react";
 import Link from "next/link";
-import React, { useState } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { supabase } from "@/lib/supabaseClient";
 
-const LogInForm = () => {
-  const { signIn } = useAuth();
+const ForgotPassword = () => {
   const router = useRouter();
   const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
+  const [recover, setRecover] = useState<boolean>(false);
   const [error, setError] = useState<boolean>(false);
-
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const email = formData.get("email") as string;
-    const password = formData.get("password") as string;
 
-    const response = await signIn(email, password);
-    if (response) {
-      router.push("/");
-    } else {
-      setError(!error);
+    const { data, error } = await supabase.auth.resetPasswordForEmail(email, {
+      redirectTo: "http://localhost:3000/update-password",
+    });
+    if (error) {
+      setError(true);
+      console.error(error);
     }
+    setError(false);
+    setRecover(true);
   };
   return (
     <>
       <section className="px-4 min-h-screen flex flex-col items-start justify-start w-full gap-10 sm:px-40 lg:px-80">
         <h1 className="sm:text-4xl text-3xl break-words font-inter font-bold text-[#595667]">
-          Welcome Back
+          Enter your email to recover your password
         </h1>
         <form
           action=""
@@ -48,37 +49,24 @@ const LogInForm = () => {
               className="w-full md:w-[60%] h-5 border-0 border-b-2 border-taka placeholder:text-start px-0.5 placeholder:text-gray-400 focus:outline-none focus:ring-0"
             />
           </div>
-          <div id="input-label-combo" className="flex flex-col w-full gap-1">
-            <label htmlFor="password" className="font-inter font-semibold">
-              Password
-            </label>
-            <input
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              name="password"
-              required
-              type="password"
-              className="w-full md:w-[60%] h-5 border-0 border-b-2 border-taka placeholder:text-start px-0.5 placeholder:text-gray-400 focus:outline-none focus:ring-0"
-            />
-          </div>
           <button
             type="submit"
             className="w-[120px] h-11 bg-taka text-white px-1.5 py-2 text-center whitespace-nowrap font-medium cursor-pointer hover:bg-white hover:text-taka transition-colors duration-200 ease-in-out hover:border-2 hover:border-taka"
           >
-            LOG IN
+            SUBMIT
           </button>
         </form>
         {error && (
           <p className="text-base font-inter text-red-600">
-            Invalid Login credentials
+            Account with this email does not exist
           </p>
         )}
-        <p className="text-base font-inter text-gray-600">
-          Forgot your password ? reset{" "}
-          <Link href={"/forgot-password"}>
-            <span className="font-inter text-tiki underline">here</span>
-          </Link>
-        </p>
+        {recover && (
+          <p className="text-base font-inter text-tiki">
+            Password recovery link has been sent, check your inbox!!
+          </p>
+        )}
+
         <p className="text-base font-inter text-gray-600">
           Don't have an account ? sign up{" "}
           <Link href={"/sign-up"}>
@@ -90,4 +78,4 @@ const LogInForm = () => {
   );
 };
 
-export default LogInForm;
+export default ForgotPassword;
