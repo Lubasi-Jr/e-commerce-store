@@ -73,18 +73,23 @@ const LogInForm = () => {
             Invalid Login credentials
           </p>
         )}
-        <p className="text-base font-inter text-gray-600">
-          Forgot your password ? reset{" "}
-          <Link href={"/forgot-password"}>
-            <span className="font-inter text-tiki underline">here</span>
-          </Link>
-        </p>
-        <p className="text-base font-inter text-gray-600">
-          Don't have an account ? sign up{" "}
-          <Link href={"/sign-up"}>
-            <span className="font-inter text-tiki underline">here</span>
-          </Link>
-        </p>
+        <div
+          id="log-in-links"
+          className="gap-1 flex flex-col items-start justify-start"
+        >
+          <p className="text-base font-inter text-gray-600">
+            Forgot your password ? reset{" "}
+            <Link href={"/forgot-password"}>
+              <span className="font-inter text-tiki underline">here</span>
+            </Link>
+          </p>
+          <p className="text-base font-inter text-gray-600">
+            Don't have an account ? sign up{" "}
+            <Link href={"/sign-up"}>
+              <span className="font-inter text-tiki underline">here</span>
+            </Link>
+          </p>
+        </div>
       </section>
     </>
   );

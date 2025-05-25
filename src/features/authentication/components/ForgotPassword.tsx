@@ -10,14 +10,20 @@ const ForgotPassword = () => {
   const [email, setEmail] = useState<string>("");
   const [recover, setRecover] = useState<boolean>(false);
   const [error, setError] = useState<boolean>(false);
+
+  // Get URL function imported from supabase docs
+  const getURL = () => {
+    let url = process.env.NEXT_PUBLIC_SITE_URL; // Set this to your site URL in production env.
+    return `${url}update-password`;
+  };
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const email = formData.get("email") as string;
 
     const { data, error } = await supabase.auth.resetPasswordForEmail(email, {
-      redirectTo:
-        "https://e-commerce-store-lubasis-projects-b5f16d2b.vercel.app/update-password",
+      redirectTo: getURL(),
     });
     if (error) {
       setError(true);
