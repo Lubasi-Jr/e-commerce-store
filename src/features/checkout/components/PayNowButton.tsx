@@ -26,7 +26,7 @@ const PayNowButton = () => {
         ))}
         <button
           type="submit"
-          className="text-center text-white bg-tiki w-[300px] h-[60px] border-2 border-tiki px-4 py-2 text-xl whitespace-nowrap hover:text-tiki hover:bg-white transition-colors duration-300 ease-in-out"
+          className="text-center text-white bg-tiki md:w-[300px] md:h-[60px] w-[220px] h-[40px] border-2 border-tiki px-4 py-2 md:text-xl text-base whitespace-nowrap hover:text-tiki hover:bg-white transition-colors duration-300 ease-in-out"
         >
           PAY NOW
         </button>
