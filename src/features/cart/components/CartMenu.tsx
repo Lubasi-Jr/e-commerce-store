@@ -14,9 +14,9 @@ const CartMenu = () => {
   const router = useRouter();
 
   const handleCheckout = () => {
-    toast.success("Your order was made successfully");
-    clearCart();
-    router.push("/");
+    //toast.success("Your order was made successfully");
+    //clearCart();
+    router.push("/checkout");
   };
 
   if (cart.length == 0)
