@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import { sendEmail } from "../actions/newsLetterEmail";
 import { toast } from "sonner";
 
 const NewsLetter = () => {
@@ -7,8 +8,6 @@ const NewsLetter = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
-    toast.success("Thank you for subscribing to our newsletter");
     setEmail("");
   };
   return (
@@ -20,13 +19,18 @@ const NewsLetter = () => {
         Sign up for emails
       </p>
       <form
-        onSubmit={handleSubmit}
+        action={async (formData) => {
+          await sendEmail(formData);
+          setEmail("");
+          toast.success("Thank you for subscribing to our newsletter");
+        }}
         id="sign-up-email"
         className="h-32 w-full px-10 flex flex-col items-center justify-center gap-5 mb-6"
       >
         <div id="input" className="w-full md:w-[390px] h-10">
           <input
             value={email}
+            name="email"
             onChange={(e) => setEmail(e.target.value)}
             type="text"
             placeholder="Enter your email address"
