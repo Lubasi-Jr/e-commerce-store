@@ -8,7 +8,7 @@ import { useCart } from "@/context/CartContext";
 const PayNowButton = () => {
   const router = useRouter();
   const { isLoggedIn } = useAuth();
-  const { cart } = useCart();
+  const { cart, clearCart } = useCart();
 
   useEffect(() => {
     if (!isLoggedIn || cart.length === 0) {

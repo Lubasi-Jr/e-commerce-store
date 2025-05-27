@@ -38,8 +38,8 @@ export function generateFormData() {
   const paymentData = {
     merchant_id: process.env.NEXT_PUBLIC_PAYFAST_MERCHANT_ID,
     merchant_key: process.env.NEXT_PUBLIC_PAYFAST_MERCHANT_KEY,
-    return_url: "http://localhost:3000",
-    cancel_url: "http://localhost:3000",
+    return_url: process.env.NEXT_PUBLIC_SITE_URL,
+    cancel_url: process.env.NEXT_PUBLIC_SITE_URL,
     name_first: user?.firstName,
     name_last: user?.surname,
     email_address: user?.email,
