@@ -40,6 +40,7 @@ export function generateFormData() {
     merchant_key: process.env.NEXT_PUBLIC_PAYFAST_MERCHANT_KEY,
     return_url: process.env.NEXT_PUBLIC_SITE_URL,
     cancel_url: process.env.NEXT_PUBLIC_SITE_URL,
+    notify_url: `${process.env.NEXT_PUBLIC_SITE_URL}/api/notify`,
     name_first: user?.firstName,
     name_last: user?.surname,
     email_address: user?.email,
