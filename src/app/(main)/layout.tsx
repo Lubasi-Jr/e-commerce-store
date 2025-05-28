@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, EB_Garamond, Inter } from "next/font/google";
 import NavBar from "@/components/ui/NavBar";
 import Footer from "@/components/ui/Footer";
 import QueryWrapper from "@/context/QueryWrapper";
+import ClientWrapper from "@/context/ClientWrapper";
 import { AuthProvider } from "@/context/AuthWrapper";
 import { CartProvider } from "@/context/CartContext";
 import { Toaster } from "@/components/ui/sonner";
