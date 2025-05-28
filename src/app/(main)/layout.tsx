@@ -56,10 +56,12 @@ export default function RootLayout({
         <AuthProvider>
           <QueryWrapper>
             <CartProvider>
-              <NavBar />
-              {children}
-              <Footer />
-              <Toaster />
+              <ClientWrapper>
+                <NavBar />
+                {children}
+                <Footer />
+                <Toaster />
+              </ClientWrapper>
             </CartProvider>
           </QueryWrapper>
         </AuthProvider>
